@@ -6,7 +6,8 @@ import VideoList from "./VideoList";
 class App extends React.Component {
 
   state = {
-    videos: []
+    videos: [],
+    selectedVideo: null
   }
 
   onTermSubmit = async (term) => {
@@ -21,11 +22,15 @@ class App extends React.Component {
     })
   }
 
+  onVideoSelect = (video) => {
+    console.log('from the app!', video)
+  }
+
   render() {
     return (
       <div className="ui container">
         <SearchBar onTermSubmit={this.onTermSubmit}/>
-        <VideoList videos={this.state.videos}/>
+        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
       </div>
     );
   }
